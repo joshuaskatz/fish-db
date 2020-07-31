@@ -1,0 +1,2303 @@
+type AggregateDates {
+  count: Int!
+}
+
+type AggregateFish {
+  count: Int!
+}
+
+type AggregateFly {
+  count: Int!
+}
+
+type AggregateRiver {
+  count: Int!
+}
+
+type AggregateTackle {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Dates {
+  id: ID!
+  date: String!
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: [String!]!
+  tackle: String!
+  river: String!
+  flies: [String!]!
+  author: User!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type DatesConnection {
+  pageInfo: PageInfo!
+  edges: [DatesEdge]!
+  aggregate: AggregateDates!
+}
+
+input DatesCreatefishInput {
+  set: [String!]
+}
+
+input DatesCreatefliesInput {
+  set: [String!]
+}
+
+input DatesCreateInput {
+  id: ID
+  date: String!
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesCreatefishInput
+  tackle: String!
+  river: String!
+  flies: DatesCreatefliesInput
+  author: UserCreateOneWithoutDatesInput!
+}
+
+input DatesCreateManyWithoutAuthorInput {
+  create: [DatesCreateWithoutAuthorInput!]
+  connect: [DatesWhereUniqueInput!]
+}
+
+input DatesCreateWithoutAuthorInput {
+  id: ID
+  date: String!
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesCreatefishInput
+  tackle: String!
+  river: String!
+  flies: DatesCreatefliesInput
+}
+
+type DatesEdge {
+  node: Dates!
+  cursor: String!
+}
+
+enum DatesOrderByInput {
+  id_ASC
+  id_DESC
+  date_ASC
+  date_DESC
+  amountCaught_ASC
+  amountCaught_DESC
+  averageSize_ASC
+  averageSize_DESC
+  largestSize_ASC
+  largestSize_DESC
+  tackle_ASC
+  tackle_DESC
+  river_ASC
+  river_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type DatesPreviousValues {
+  id: ID!
+  date: String!
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: [String!]!
+  tackle: String!
+  river: String!
+  flies: [String!]!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input DatesScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: String
+  date_not: String
+  date_in: [String!]
+  date_not_in: [String!]
+  date_lt: String
+  date_lte: String
+  date_gt: String
+  date_gte: String
+  date_contains: String
+  date_not_contains: String
+  date_starts_with: String
+  date_not_starts_with: String
+  date_ends_with: String
+  date_not_ends_with: String
+  amountCaught: String
+  amountCaught_not: String
+  amountCaught_in: [String!]
+  amountCaught_not_in: [String!]
+  amountCaught_lt: String
+  amountCaught_lte: String
+  amountCaught_gt: String
+  amountCaught_gte: String
+  amountCaught_contains: String
+  amountCaught_not_contains: String
+  amountCaught_starts_with: String
+  amountCaught_not_starts_with: String
+  amountCaught_ends_with: String
+  amountCaught_not_ends_with: String
+  averageSize: String
+  averageSize_not: String
+  averageSize_in: [String!]
+  averageSize_not_in: [String!]
+  averageSize_lt: String
+  averageSize_lte: String
+  averageSize_gt: String
+  averageSize_gte: String
+  averageSize_contains: String
+  averageSize_not_contains: String
+  averageSize_starts_with: String
+  averageSize_not_starts_with: String
+  averageSize_ends_with: String
+  averageSize_not_ends_with: String
+  largestSize: String
+  largestSize_not: String
+  largestSize_in: [String!]
+  largestSize_not_in: [String!]
+  largestSize_lt: String
+  largestSize_lte: String
+  largestSize_gt: String
+  largestSize_gte: String
+  largestSize_contains: String
+  largestSize_not_contains: String
+  largestSize_starts_with: String
+  largestSize_not_starts_with: String
+  largestSize_ends_with: String
+  largestSize_not_ends_with: String
+  tackle: String
+  tackle_not: String
+  tackle_in: [String!]
+  tackle_not_in: [String!]
+  tackle_lt: String
+  tackle_lte: String
+  tackle_gt: String
+  tackle_gte: String
+  tackle_contains: String
+  tackle_not_contains: String
+  tackle_starts_with: String
+  tackle_not_starts_with: String
+  tackle_ends_with: String
+  tackle_not_ends_with: String
+  river: String
+  river_not: String
+  river_in: [String!]
+  river_not_in: [String!]
+  river_lt: String
+  river_lte: String
+  river_gt: String
+  river_gte: String
+  river_contains: String
+  river_not_contains: String
+  river_starts_with: String
+  river_not_starts_with: String
+  river_ends_with: String
+  river_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [DatesScalarWhereInput!]
+  OR: [DatesScalarWhereInput!]
+  NOT: [DatesScalarWhereInput!]
+}
+
+type DatesSubscriptionPayload {
+  mutation: MutationType!
+  node: Dates
+  updatedFields: [String!]
+  previousValues: DatesPreviousValues
+}
+
+input DatesSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: DatesWhereInput
+  AND: [DatesSubscriptionWhereInput!]
+  OR: [DatesSubscriptionWhereInput!]
+  NOT: [DatesSubscriptionWhereInput!]
+}
+
+input DatesUpdatefishInput {
+  set: [String!]
+}
+
+input DatesUpdatefliesInput {
+  set: [String!]
+}
+
+input DatesUpdateInput {
+  date: String
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesUpdatefishInput
+  tackle: String
+  river: String
+  flies: DatesUpdatefliesInput
+  author: UserUpdateOneRequiredWithoutDatesInput
+}
+
+input DatesUpdateManyDataInput {
+  date: String
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesUpdatefishInput
+  tackle: String
+  river: String
+  flies: DatesUpdatefliesInput
+}
+
+input DatesUpdateManyMutationInput {
+  date: String
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesUpdatefishInput
+  tackle: String
+  river: String
+  flies: DatesUpdatefliesInput
+}
+
+input DatesUpdateManyWithoutAuthorInput {
+  create: [DatesCreateWithoutAuthorInput!]
+  delete: [DatesWhereUniqueInput!]
+  connect: [DatesWhereUniqueInput!]
+  set: [DatesWhereUniqueInput!]
+  disconnect: [DatesWhereUniqueInput!]
+  update: [DatesUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [DatesUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [DatesScalarWhereInput!]
+  updateMany: [DatesUpdateManyWithWhereNestedInput!]
+}
+
+input DatesUpdateManyWithWhereNestedInput {
+  where: DatesScalarWhereInput!
+  data: DatesUpdateManyDataInput!
+}
+
+input DatesUpdateWithoutAuthorDataInput {
+  date: String
+  amountCaught: String
+  averageSize: String
+  largestSize: String
+  fish: DatesUpdatefishInput
+  tackle: String
+  river: String
+  flies: DatesUpdatefliesInput
+}
+
+input DatesUpdateWithWhereUniqueWithoutAuthorInput {
+  where: DatesWhereUniqueInput!
+  data: DatesUpdateWithoutAuthorDataInput!
+}
+
+input DatesUpsertWithWhereUniqueWithoutAuthorInput {
+  where: DatesWhereUniqueInput!
+  update: DatesUpdateWithoutAuthorDataInput!
+  create: DatesCreateWithoutAuthorInput!
+}
+
+input DatesWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  date: String
+  date_not: String
+  date_in: [String!]
+  date_not_in: [String!]
+  date_lt: String
+  date_lte: String
+  date_gt: String
+  date_gte: String
+  date_contains: String
+  date_not_contains: String
+  date_starts_with: String
+  date_not_starts_with: String
+  date_ends_with: String
+  date_not_ends_with: String
+  amountCaught: String
+  amountCaught_not: String
+  amountCaught_in: [String!]
+  amountCaught_not_in: [String!]
+  amountCaught_lt: String
+  amountCaught_lte: String
+  amountCaught_gt: String
+  amountCaught_gte: String
+  amountCaught_contains: String
+  amountCaught_not_contains: String
+  amountCaught_starts_with: String
+  amountCaught_not_starts_with: String
+  amountCaught_ends_with: String
+  amountCaught_not_ends_with: String
+  averageSize: String
+  averageSize_not: String
+  averageSize_in: [String!]
+  averageSize_not_in: [String!]
+  averageSize_lt: String
+  averageSize_lte: String
+  averageSize_gt: String
+  averageSize_gte: String
+  averageSize_contains: String
+  averageSize_not_contains: String
+  averageSize_starts_with: String
+  averageSize_not_starts_with: String
+  averageSize_ends_with: String
+  averageSize_not_ends_with: String
+  largestSize: String
+  largestSize_not: String
+  largestSize_in: [String!]
+  largestSize_not_in: [String!]
+  largestSize_lt: String
+  largestSize_lte: String
+  largestSize_gt: String
+  largestSize_gte: String
+  largestSize_contains: String
+  largestSize_not_contains: String
+  largestSize_starts_with: String
+  largestSize_not_starts_with: String
+  largestSize_ends_with: String
+  largestSize_not_ends_with: String
+  tackle: String
+  tackle_not: String
+  tackle_in: [String!]
+  tackle_not_in: [String!]
+  tackle_lt: String
+  tackle_lte: String
+  tackle_gt: String
+  tackle_gte: String
+  tackle_contains: String
+  tackle_not_contains: String
+  tackle_starts_with: String
+  tackle_not_starts_with: String
+  tackle_ends_with: String
+  tackle_not_ends_with: String
+  river: String
+  river_not: String
+  river_in: [String!]
+  river_not_in: [String!]
+  river_lt: String
+  river_lte: String
+  river_gt: String
+  river_gte: String
+  river_contains: String
+  river_not_contains: String
+  river_starts_with: String
+  river_not_starts_with: String
+  river_ends_with: String
+  river_not_ends_with: String
+  author: UserWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [DatesWhereInput!]
+  OR: [DatesWhereInput!]
+  NOT: [DatesWhereInput!]
+}
+
+input DatesWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type Fish {
+  id: ID!
+  species: String!
+  subspecies: String
+  author: User!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type FishConnection {
+  pageInfo: PageInfo!
+  edges: [FishEdge]!
+  aggregate: AggregateFish!
+}
+
+input FishCreateInput {
+  id: ID
+  species: String!
+  subspecies: String
+  author: UserCreateOneWithoutFishInput!
+}
+
+input FishCreateManyWithoutAuthorInput {
+  create: [FishCreateWithoutAuthorInput!]
+  connect: [FishWhereUniqueInput!]
+}
+
+input FishCreateWithoutAuthorInput {
+  id: ID
+  species: String!
+  subspecies: String
+}
+
+type FishEdge {
+  node: Fish!
+  cursor: String!
+}
+
+enum FishOrderByInput {
+  id_ASC
+  id_DESC
+  species_ASC
+  species_DESC
+  subspecies_ASC
+  subspecies_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type FishPreviousValues {
+  id: ID!
+  species: String!
+  subspecies: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input FishScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  species: String
+  species_not: String
+  species_in: [String!]
+  species_not_in: [String!]
+  species_lt: String
+  species_lte: String
+  species_gt: String
+  species_gte: String
+  species_contains: String
+  species_not_contains: String
+  species_starts_with: String
+  species_not_starts_with: String
+  species_ends_with: String
+  species_not_ends_with: String
+  subspecies: String
+  subspecies_not: String
+  subspecies_in: [String!]
+  subspecies_not_in: [String!]
+  subspecies_lt: String
+  subspecies_lte: String
+  subspecies_gt: String
+  subspecies_gte: String
+  subspecies_contains: String
+  subspecies_not_contains: String
+  subspecies_starts_with: String
+  subspecies_not_starts_with: String
+  subspecies_ends_with: String
+  subspecies_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [FishScalarWhereInput!]
+  OR: [FishScalarWhereInput!]
+  NOT: [FishScalarWhereInput!]
+}
+
+type FishSubscriptionPayload {
+  mutation: MutationType!
+  node: Fish
+  updatedFields: [String!]
+  previousValues: FishPreviousValues
+}
+
+input FishSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: FishWhereInput
+  AND: [FishSubscriptionWhereInput!]
+  OR: [FishSubscriptionWhereInput!]
+  NOT: [FishSubscriptionWhereInput!]
+}
+
+input FishUpdateInput {
+  species: String
+  subspecies: String
+  author: UserUpdateOneRequiredWithoutFishInput
+}
+
+input FishUpdateManyDataInput {
+  species: String
+  subspecies: String
+}
+
+input FishUpdateManyMutationInput {
+  species: String
+  subspecies: String
+}
+
+input FishUpdateManyWithoutAuthorInput {
+  create: [FishCreateWithoutAuthorInput!]
+  delete: [FishWhereUniqueInput!]
+  connect: [FishWhereUniqueInput!]
+  set: [FishWhereUniqueInput!]
+  disconnect: [FishWhereUniqueInput!]
+  update: [FishUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [FishUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [FishScalarWhereInput!]
+  updateMany: [FishUpdateManyWithWhereNestedInput!]
+}
+
+input FishUpdateManyWithWhereNestedInput {
+  where: FishScalarWhereInput!
+  data: FishUpdateManyDataInput!
+}
+
+input FishUpdateWithoutAuthorDataInput {
+  species: String
+  subspecies: String
+}
+
+input FishUpdateWithWhereUniqueWithoutAuthorInput {
+  where: FishWhereUniqueInput!
+  data: FishUpdateWithoutAuthorDataInput!
+}
+
+input FishUpsertWithWhereUniqueWithoutAuthorInput {
+  where: FishWhereUniqueInput!
+  update: FishUpdateWithoutAuthorDataInput!
+  create: FishCreateWithoutAuthorInput!
+}
+
+input FishWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  species: String
+  species_not: String
+  species_in: [String!]
+  species_not_in: [String!]
+  species_lt: String
+  species_lte: String
+  species_gt: String
+  species_gte: String
+  species_contains: String
+  species_not_contains: String
+  species_starts_with: String
+  species_not_starts_with: String
+  species_ends_with: String
+  species_not_ends_with: String
+  subspecies: String
+  subspecies_not: String
+  subspecies_in: [String!]
+  subspecies_not_in: [String!]
+  subspecies_lt: String
+  subspecies_lte: String
+  subspecies_gt: String
+  subspecies_gte: String
+  subspecies_contains: String
+  subspecies_not_contains: String
+  subspecies_starts_with: String
+  subspecies_not_starts_with: String
+  subspecies_ends_with: String
+  subspecies_not_ends_with: String
+  author: UserWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [FishWhereInput!]
+  OR: [FishWhereInput!]
+  NOT: [FishWhereInput!]
+}
+
+input FishWhereUniqueInput {
+  id: ID
+}
+
+type Fly {
+  id: ID!
+  type: String!
+  name: String!
+  color: String!
+  author: User!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type FlyConnection {
+  pageInfo: PageInfo!
+  edges: [FlyEdge]!
+  aggregate: AggregateFly!
+}
+
+input FlyCreateInput {
+  id: ID
+  type: String!
+  name: String!
+  color: String!
+  author: UserCreateOneWithoutFliesInput!
+}
+
+input FlyCreateManyWithoutAuthorInput {
+  create: [FlyCreateWithoutAuthorInput!]
+  connect: [FlyWhereUniqueInput!]
+}
+
+input FlyCreateWithoutAuthorInput {
+  id: ID
+  type: String!
+  name: String!
+  color: String!
+}
+
+type FlyEdge {
+  node: Fly!
+  cursor: String!
+}
+
+enum FlyOrderByInput {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  name_ASC
+  name_DESC
+  color_ASC
+  color_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type FlyPreviousValues {
+  id: ID!
+  type: String!
+  name: String!
+  color: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input FlyScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [FlyScalarWhereInput!]
+  OR: [FlyScalarWhereInput!]
+  NOT: [FlyScalarWhereInput!]
+}
+
+type FlySubscriptionPayload {
+  mutation: MutationType!
+  node: Fly
+  updatedFields: [String!]
+  previousValues: FlyPreviousValues
+}
+
+input FlySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: FlyWhereInput
+  AND: [FlySubscriptionWhereInput!]
+  OR: [FlySubscriptionWhereInput!]
+  NOT: [FlySubscriptionWhereInput!]
+}
+
+input FlyUpdateInput {
+  type: String
+  name: String
+  color: String
+  author: UserUpdateOneRequiredWithoutFliesInput
+}
+
+input FlyUpdateManyDataInput {
+  type: String
+  name: String
+  color: String
+}
+
+input FlyUpdateManyMutationInput {
+  type: String
+  name: String
+  color: String
+}
+
+input FlyUpdateManyWithoutAuthorInput {
+  create: [FlyCreateWithoutAuthorInput!]
+  delete: [FlyWhereUniqueInput!]
+  connect: [FlyWhereUniqueInput!]
+  set: [FlyWhereUniqueInput!]
+  disconnect: [FlyWhereUniqueInput!]
+  update: [FlyUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [FlyUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [FlyScalarWhereInput!]
+  updateMany: [FlyUpdateManyWithWhereNestedInput!]
+}
+
+input FlyUpdateManyWithWhereNestedInput {
+  where: FlyScalarWhereInput!
+  data: FlyUpdateManyDataInput!
+}
+
+input FlyUpdateWithoutAuthorDataInput {
+  type: String
+  name: String
+  color: String
+}
+
+input FlyUpdateWithWhereUniqueWithoutAuthorInput {
+  where: FlyWhereUniqueInput!
+  data: FlyUpdateWithoutAuthorDataInput!
+}
+
+input FlyUpsertWithWhereUniqueWithoutAuthorInput {
+  where: FlyWhereUniqueInput!
+  update: FlyUpdateWithoutAuthorDataInput!
+  create: FlyCreateWithoutAuthorInput!
+}
+
+input FlyWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  type: String
+  type_not: String
+  type_in: [String!]
+  type_not_in: [String!]
+  type_lt: String
+  type_lte: String
+  type_gt: String
+  type_gte: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  author: UserWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [FlyWhereInput!]
+  OR: [FlyWhereInput!]
+  NOT: [FlyWhereInput!]
+}
+
+input FlyWhereUniqueInput {
+  id: ID
+}
+
+scalar Long
+
+type Mutation {
+  createDates(data: DatesCreateInput!): Dates!
+  updateDates(data: DatesUpdateInput!, where: DatesWhereUniqueInput!): Dates
+  updateManyDateses(data: DatesUpdateManyMutationInput!, where: DatesWhereInput): BatchPayload!
+  upsertDates(where: DatesWhereUniqueInput!, create: DatesCreateInput!, update: DatesUpdateInput!): Dates!
+  deleteDates(where: DatesWhereUniqueInput!): Dates
+  deleteManyDateses(where: DatesWhereInput): BatchPayload!
+  createFish(data: FishCreateInput!): Fish!
+  updateFish(data: FishUpdateInput!, where: FishWhereUniqueInput!): Fish
+  updateManyFishs(data: FishUpdateManyMutationInput!, where: FishWhereInput): BatchPayload!
+  upsertFish(where: FishWhereUniqueInput!, create: FishCreateInput!, update: FishUpdateInput!): Fish!
+  deleteFish(where: FishWhereUniqueInput!): Fish
+  deleteManyFishs(where: FishWhereInput): BatchPayload!
+  createFly(data: FlyCreateInput!): Fly!
+  updateFly(data: FlyUpdateInput!, where: FlyWhereUniqueInput!): Fly
+  updateManyFlies(data: FlyUpdateManyMutationInput!, where: FlyWhereInput): BatchPayload!
+  upsertFly(where: FlyWhereUniqueInput!, create: FlyCreateInput!, update: FlyUpdateInput!): Fly!
+  deleteFly(where: FlyWhereUniqueInput!): Fly
+  deleteManyFlies(where: FlyWhereInput): BatchPayload!
+  createRiver(data: RiverCreateInput!): River!
+  updateRiver(data: RiverUpdateInput!, where: RiverWhereUniqueInput!): River
+  updateManyRivers(data: RiverUpdateManyMutationInput!, where: RiverWhereInput): BatchPayload!
+  upsertRiver(where: RiverWhereUniqueInput!, create: RiverCreateInput!, update: RiverUpdateInput!): River!
+  deleteRiver(where: RiverWhereUniqueInput!): River
+  deleteManyRivers(where: RiverWhereInput): BatchPayload!
+  createTackle(data: TackleCreateInput!): Tackle!
+  updateTackle(data: TackleUpdateInput!, where: TackleWhereUniqueInput!): Tackle
+  updateManyTackles(data: TackleUpdateManyMutationInput!, where: TackleWhereInput): BatchPayload!
+  upsertTackle(where: TackleWhereUniqueInput!, create: TackleCreateInput!, update: TackleUpdateInput!): Tackle!
+  deleteTackle(where: TackleWhereUniqueInput!): Tackle
+  deleteManyTackles(where: TackleWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  dates(where: DatesWhereUniqueInput!): Dates
+  dateses(where: DatesWhereInput, orderBy: DatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dates]!
+  datesesConnection(where: DatesWhereInput, orderBy: DatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DatesConnection!
+  fish(where: FishWhereUniqueInput!): Fish
+  fishs(where: FishWhereInput, orderBy: FishOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Fish]!
+  fishsConnection(where: FishWhereInput, orderBy: FishOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FishConnection!
+  fly(where: FlyWhereUniqueInput!): Fly
+  flies(where: FlyWhereInput, orderBy: FlyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Fly]!
+  fliesConnection(where: FlyWhereInput, orderBy: FlyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FlyConnection!
+  river(where: RiverWhereUniqueInput!): River
+  rivers(where: RiverWhereInput, orderBy: RiverOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [River]!
+  riversConnection(where: RiverWhereInput, orderBy: RiverOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RiverConnection!
+  tackle(where: TackleWhereUniqueInput!): Tackle
+  tackles(where: TackleWhereInput, orderBy: TackleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tackle]!
+  tacklesConnection(where: TackleWhereInput, orderBy: TackleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TackleConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type River {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  overgrown: String
+  size: String
+  regulation: String!
+  author: User!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type RiverConnection {
+  pageInfo: PageInfo!
+  edges: [RiverEdge]!
+  aggregate: AggregateRiver!
+}
+
+input RiverCreateInput {
+  id: ID
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  overgrown: String
+  size: String
+  regulation: String!
+  author: UserCreateOneWithoutRiversInput!
+}
+
+input RiverCreateManyWithoutAuthorInput {
+  create: [RiverCreateWithoutAuthorInput!]
+  connect: [RiverWhereUniqueInput!]
+}
+
+input RiverCreateWithoutAuthorInput {
+  id: ID
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  overgrown: String
+  size: String
+  regulation: String!
+}
+
+type RiverEdge {
+  node: River!
+  cursor: String!
+}
+
+enum RiverOrderByInput {
+  id_ASC
+  id_DESC
+  latitude_ASC
+  latitude_DESC
+  longitude_ASC
+  longitude_DESC
+  name_ASC
+  name_DESC
+  overgrown_ASC
+  overgrown_DESC
+  size_ASC
+  size_DESC
+  regulation_ASC
+  regulation_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type RiverPreviousValues {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  overgrown: String
+  size: String
+  regulation: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input RiverScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  latitude: Float
+  latitude_not: Float
+  latitude_in: [Float!]
+  latitude_not_in: [Float!]
+  latitude_lt: Float
+  latitude_lte: Float
+  latitude_gt: Float
+  latitude_gte: Float
+  longitude: Float
+  longitude_not: Float
+  longitude_in: [Float!]
+  longitude_not_in: [Float!]
+  longitude_lt: Float
+  longitude_lte: Float
+  longitude_gt: Float
+  longitude_gte: Float
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  overgrown: String
+  overgrown_not: String
+  overgrown_in: [String!]
+  overgrown_not_in: [String!]
+  overgrown_lt: String
+  overgrown_lte: String
+  overgrown_gt: String
+  overgrown_gte: String
+  overgrown_contains: String
+  overgrown_not_contains: String
+  overgrown_starts_with: String
+  overgrown_not_starts_with: String
+  overgrown_ends_with: String
+  overgrown_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  regulation: String
+  regulation_not: String
+  regulation_in: [String!]
+  regulation_not_in: [String!]
+  regulation_lt: String
+  regulation_lte: String
+  regulation_gt: String
+  regulation_gte: String
+  regulation_contains: String
+  regulation_not_contains: String
+  regulation_starts_with: String
+  regulation_not_starts_with: String
+  regulation_ends_with: String
+  regulation_not_ends_with: String
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [RiverScalarWhereInput!]
+  OR: [RiverScalarWhereInput!]
+  NOT: [RiverScalarWhereInput!]
+}
+
+type RiverSubscriptionPayload {
+  mutation: MutationType!
+  node: River
+  updatedFields: [String!]
+  previousValues: RiverPreviousValues
+}
+
+input RiverSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: RiverWhereInput
+  AND: [RiverSubscriptionWhereInput!]
+  OR: [RiverSubscriptionWhereInput!]
+  NOT: [RiverSubscriptionWhereInput!]
+}
+
+input RiverUpdateInput {
+  latitude: Float
+  longitude: Float
+  name: String
+  overgrown: String
+  size: String
+  regulation: String
+  author: UserUpdateOneRequiredWithoutRiversInput
+}
+
+input RiverUpdateManyDataInput {
+  latitude: Float
+  longitude: Float
+  name: String
+  overgrown: String
+  size: String
+  regulation: String
+}
+
+input RiverUpdateManyMutationInput {
+  latitude: Float
+  longitude: Float
+  name: String
+  overgrown: String
+  size: String
+  regulation: String
+}
+
+input RiverUpdateManyWithoutAuthorInput {
+  create: [RiverCreateWithoutAuthorInput!]
+  delete: [RiverWhereUniqueInput!]
+  connect: [RiverWhereUniqueInput!]
+  set: [RiverWhereUniqueInput!]
+  disconnect: [RiverWhereUniqueInput!]
+  update: [RiverUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [RiverUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [RiverScalarWhereInput!]
+  updateMany: [RiverUpdateManyWithWhereNestedInput!]
+}
+
+input RiverUpdateManyWithWhereNestedInput {
+  where: RiverScalarWhereInput!
+  data: RiverUpdateManyDataInput!
+}
+
+input RiverUpdateWithoutAuthorDataInput {
+  latitude: Float
+  longitude: Float
+  name: String
+  overgrown: String
+  size: String
+  regulation: String
+}
+
+input RiverUpdateWithWhereUniqueWithoutAuthorInput {
+  where: RiverWhereUniqueInput!
+  data: RiverUpdateWithoutAuthorDataInput!
+}
+
+input RiverUpsertWithWhereUniqueWithoutAuthorInput {
+  where: RiverWhereUniqueInput!
+  update: RiverUpdateWithoutAuthorDataInput!
+  create: RiverCreateWithoutAuthorInput!
+}
+
+input RiverWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  latitude: Float
+  latitude_not: Float
+  latitude_in: [Float!]
+  latitude_not_in: [Float!]
+  latitude_lt: Float
+  latitude_lte: Float
+  latitude_gt: Float
+  latitude_gte: Float
+  longitude: Float
+  longitude_not: Float
+  longitude_in: [Float!]
+  longitude_not_in: [Float!]
+  longitude_lt: Float
+  longitude_lte: Float
+  longitude_gt: Float
+  longitude_gte: Float
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  overgrown: String
+  overgrown_not: String
+  overgrown_in: [String!]
+  overgrown_not_in: [String!]
+  overgrown_lt: String
+  overgrown_lte: String
+  overgrown_gt: String
+  overgrown_gte: String
+  overgrown_contains: String
+  overgrown_not_contains: String
+  overgrown_starts_with: String
+  overgrown_not_starts_with: String
+  overgrown_ends_with: String
+  overgrown_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  regulation: String
+  regulation_not: String
+  regulation_in: [String!]
+  regulation_not_in: [String!]
+  regulation_lt: String
+  regulation_lte: String
+  regulation_gt: String
+  regulation_gte: String
+  regulation_contains: String
+  regulation_not_contains: String
+  regulation_starts_with: String
+  regulation_not_starts_with: String
+  regulation_ends_with: String
+  regulation_not_ends_with: String
+  author: UserWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [RiverWhereInput!]
+  OR: [RiverWhereInput!]
+  NOT: [RiverWhereInput!]
+}
+
+input RiverWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  dates(where: DatesSubscriptionWhereInput): DatesSubscriptionPayload
+  fish(where: FishSubscriptionWhereInput): FishSubscriptionPayload
+  fly(where: FlySubscriptionWhereInput): FlySubscriptionPayload
+  river(where: RiverSubscriptionWhereInput): RiverSubscriptionPayload
+  tackle(where: TackleSubscriptionWhereInput): TackleSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type Tackle {
+  id: ID!
+  rod: String!
+  rodWeight: Int!
+  rodLengthFeet: Int!
+  rodLengthInches: Int!
+  overcharged: String!
+  leaderLengthFeet: Int!
+  leaderLengthInches: Int!
+  tippetSize: Int!
+  author: User!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type TackleConnection {
+  pageInfo: PageInfo!
+  edges: [TackleEdge]!
+  aggregate: AggregateTackle!
+}
+
+input TackleCreateInput {
+  id: ID
+  rod: String!
+  rodWeight: Int!
+  rodLengthFeet: Int!
+  rodLengthInches: Int!
+  overcharged: String!
+  leaderLengthFeet: Int!
+  leaderLengthInches: Int!
+  tippetSize: Int!
+  author: UserCreateOneWithoutTacklesInput!
+}
+
+input TackleCreateManyWithoutAuthorInput {
+  create: [TackleCreateWithoutAuthorInput!]
+  connect: [TackleWhereUniqueInput!]
+}
+
+input TackleCreateWithoutAuthorInput {
+  id: ID
+  rod: String!
+  rodWeight: Int!
+  rodLengthFeet: Int!
+  rodLengthInches: Int!
+  overcharged: String!
+  leaderLengthFeet: Int!
+  leaderLengthInches: Int!
+  tippetSize: Int!
+}
+
+type TackleEdge {
+  node: Tackle!
+  cursor: String!
+}
+
+enum TackleOrderByInput {
+  id_ASC
+  id_DESC
+  rod_ASC
+  rod_DESC
+  rodWeight_ASC
+  rodWeight_DESC
+  rodLengthFeet_ASC
+  rodLengthFeet_DESC
+  rodLengthInches_ASC
+  rodLengthInches_DESC
+  overcharged_ASC
+  overcharged_DESC
+  leaderLengthFeet_ASC
+  leaderLengthFeet_DESC
+  leaderLengthInches_ASC
+  leaderLengthInches_DESC
+  tippetSize_ASC
+  tippetSize_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TacklePreviousValues {
+  id: ID!
+  rod: String!
+  rodWeight: Int!
+  rodLengthFeet: Int!
+  rodLengthInches: Int!
+  overcharged: String!
+  leaderLengthFeet: Int!
+  leaderLengthInches: Int!
+  tippetSize: Int!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+input TackleScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  rod: String
+  rod_not: String
+  rod_in: [String!]
+  rod_not_in: [String!]
+  rod_lt: String
+  rod_lte: String
+  rod_gt: String
+  rod_gte: String
+  rod_contains: String
+  rod_not_contains: String
+  rod_starts_with: String
+  rod_not_starts_with: String
+  rod_ends_with: String
+  rod_not_ends_with: String
+  rodWeight: Int
+  rodWeight_not: Int
+  rodWeight_in: [Int!]
+  rodWeight_not_in: [Int!]
+  rodWeight_lt: Int
+  rodWeight_lte: Int
+  rodWeight_gt: Int
+  rodWeight_gte: Int
+  rodLengthFeet: Int
+  rodLengthFeet_not: Int
+  rodLengthFeet_in: [Int!]
+  rodLengthFeet_not_in: [Int!]
+  rodLengthFeet_lt: Int
+  rodLengthFeet_lte: Int
+  rodLengthFeet_gt: Int
+  rodLengthFeet_gte: Int
+  rodLengthInches: Int
+  rodLengthInches_not: Int
+  rodLengthInches_in: [Int!]
+  rodLengthInches_not_in: [Int!]
+  rodLengthInches_lt: Int
+  rodLengthInches_lte: Int
+  rodLengthInches_gt: Int
+  rodLengthInches_gte: Int
+  overcharged: String
+  overcharged_not: String
+  overcharged_in: [String!]
+  overcharged_not_in: [String!]
+  overcharged_lt: String
+  overcharged_lte: String
+  overcharged_gt: String
+  overcharged_gte: String
+  overcharged_contains: String
+  overcharged_not_contains: String
+  overcharged_starts_with: String
+  overcharged_not_starts_with: String
+  overcharged_ends_with: String
+  overcharged_not_ends_with: String
+  leaderLengthFeet: Int
+  leaderLengthFeet_not: Int
+  leaderLengthFeet_in: [Int!]
+  leaderLengthFeet_not_in: [Int!]
+  leaderLengthFeet_lt: Int
+  leaderLengthFeet_lte: Int
+  leaderLengthFeet_gt: Int
+  leaderLengthFeet_gte: Int
+  leaderLengthInches: Int
+  leaderLengthInches_not: Int
+  leaderLengthInches_in: [Int!]
+  leaderLengthInches_not_in: [Int!]
+  leaderLengthInches_lt: Int
+  leaderLengthInches_lte: Int
+  leaderLengthInches_gt: Int
+  leaderLengthInches_gte: Int
+  tippetSize: Int
+  tippetSize_not: Int
+  tippetSize_in: [Int!]
+  tippetSize_not_in: [Int!]
+  tippetSize_lt: Int
+  tippetSize_lte: Int
+  tippetSize_gt: Int
+  tippetSize_gte: Int
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TackleScalarWhereInput!]
+  OR: [TackleScalarWhereInput!]
+  NOT: [TackleScalarWhereInput!]
+}
+
+type TackleSubscriptionPayload {
+  mutation: MutationType!
+  node: Tackle
+  updatedFields: [String!]
+  previousValues: TacklePreviousValues
+}
+
+input TackleSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TackleWhereInput
+  AND: [TackleSubscriptionWhereInput!]
+  OR: [TackleSubscriptionWhereInput!]
+  NOT: [TackleSubscriptionWhereInput!]
+}
+
+input TackleUpdateInput {
+  rod: String
+  rodWeight: Int
+  rodLengthFeet: Int
+  rodLengthInches: Int
+  overcharged: String
+  leaderLengthFeet: Int
+  leaderLengthInches: Int
+  tippetSize: Int
+  author: UserUpdateOneRequiredWithoutTacklesInput
+}
+
+input TackleUpdateManyDataInput {
+  rod: String
+  rodWeight: Int
+  rodLengthFeet: Int
+  rodLengthInches: Int
+  overcharged: String
+  leaderLengthFeet: Int
+  leaderLengthInches: Int
+  tippetSize: Int
+}
+
+input TackleUpdateManyMutationInput {
+  rod: String
+  rodWeight: Int
+  rodLengthFeet: Int
+  rodLengthInches: Int
+  overcharged: String
+  leaderLengthFeet: Int
+  leaderLengthInches: Int
+  tippetSize: Int
+}
+
+input TackleUpdateManyWithoutAuthorInput {
+  create: [TackleCreateWithoutAuthorInput!]
+  delete: [TackleWhereUniqueInput!]
+  connect: [TackleWhereUniqueInput!]
+  set: [TackleWhereUniqueInput!]
+  disconnect: [TackleWhereUniqueInput!]
+  update: [TackleUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [TackleUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [TackleScalarWhereInput!]
+  updateMany: [TackleUpdateManyWithWhereNestedInput!]
+}
+
+input TackleUpdateManyWithWhereNestedInput {
+  where: TackleScalarWhereInput!
+  data: TackleUpdateManyDataInput!
+}
+
+input TackleUpdateWithoutAuthorDataInput {
+  rod: String
+  rodWeight: Int
+  rodLengthFeet: Int
+  rodLengthInches: Int
+  overcharged: String
+  leaderLengthFeet: Int
+  leaderLengthInches: Int
+  tippetSize: Int
+}
+
+input TackleUpdateWithWhereUniqueWithoutAuthorInput {
+  where: TackleWhereUniqueInput!
+  data: TackleUpdateWithoutAuthorDataInput!
+}
+
+input TackleUpsertWithWhereUniqueWithoutAuthorInput {
+  where: TackleWhereUniqueInput!
+  update: TackleUpdateWithoutAuthorDataInput!
+  create: TackleCreateWithoutAuthorInput!
+}
+
+input TackleWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  rod: String
+  rod_not: String
+  rod_in: [String!]
+  rod_not_in: [String!]
+  rod_lt: String
+  rod_lte: String
+  rod_gt: String
+  rod_gte: String
+  rod_contains: String
+  rod_not_contains: String
+  rod_starts_with: String
+  rod_not_starts_with: String
+  rod_ends_with: String
+  rod_not_ends_with: String
+  rodWeight: Int
+  rodWeight_not: Int
+  rodWeight_in: [Int!]
+  rodWeight_not_in: [Int!]
+  rodWeight_lt: Int
+  rodWeight_lte: Int
+  rodWeight_gt: Int
+  rodWeight_gte: Int
+  rodLengthFeet: Int
+  rodLengthFeet_not: Int
+  rodLengthFeet_in: [Int!]
+  rodLengthFeet_not_in: [Int!]
+  rodLengthFeet_lt: Int
+  rodLengthFeet_lte: Int
+  rodLengthFeet_gt: Int
+  rodLengthFeet_gte: Int
+  rodLengthInches: Int
+  rodLengthInches_not: Int
+  rodLengthInches_in: [Int!]
+  rodLengthInches_not_in: [Int!]
+  rodLengthInches_lt: Int
+  rodLengthInches_lte: Int
+  rodLengthInches_gt: Int
+  rodLengthInches_gte: Int
+  overcharged: String
+  overcharged_not: String
+  overcharged_in: [String!]
+  overcharged_not_in: [String!]
+  overcharged_lt: String
+  overcharged_lte: String
+  overcharged_gt: String
+  overcharged_gte: String
+  overcharged_contains: String
+  overcharged_not_contains: String
+  overcharged_starts_with: String
+  overcharged_not_starts_with: String
+  overcharged_ends_with: String
+  overcharged_not_ends_with: String
+  leaderLengthFeet: Int
+  leaderLengthFeet_not: Int
+  leaderLengthFeet_in: [Int!]
+  leaderLengthFeet_not_in: [Int!]
+  leaderLengthFeet_lt: Int
+  leaderLengthFeet_lte: Int
+  leaderLengthFeet_gt: Int
+  leaderLengthFeet_gte: Int
+  leaderLengthInches: Int
+  leaderLengthInches_not: Int
+  leaderLengthInches_in: [Int!]
+  leaderLengthInches_not_in: [Int!]
+  leaderLengthInches_lt: Int
+  leaderLengthInches_lte: Int
+  leaderLengthInches_gt: Int
+  leaderLengthInches_gte: Int
+  tippetSize: Int
+  tippetSize_not: Int
+  tippetSize_in: [Int!]
+  tippetSize_not_in: [Int!]
+  tippetSize_lt: Int
+  tippetSize_lte: Int
+  tippetSize_gt: Int
+  tippetSize_gte: Int
+  author: UserWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [TackleWhereInput!]
+  OR: [TackleWhereInput!]
+  NOT: [TackleWhereInput!]
+}
+
+input TackleWhereUniqueInput {
+  id: ID
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  fish(where: FishWhereInput, orderBy: FishOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Fish!]
+  flies(where: FlyWhereInput, orderBy: FlyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Fly!]
+  rivers(where: RiverWhereInput, orderBy: RiverOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [River!]
+  tackles(where: TackleWhereInput, orderBy: TackleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tackle!]
+  dates(where: DatesWhereInput, orderBy: DatesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dates!]
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  fish: FishCreateManyWithoutAuthorInput
+  flies: FlyCreateManyWithoutAuthorInput
+  rivers: RiverCreateManyWithoutAuthorInput
+  tackles: TackleCreateManyWithoutAuthorInput
+  dates: DatesCreateManyWithoutAuthorInput
+}
+
+input UserCreateOneWithoutDatesInput {
+  create: UserCreateWithoutDatesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutFishInput {
+  create: UserCreateWithoutFishInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutFliesInput {
+  create: UserCreateWithoutFliesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutRiversInput {
+  create: UserCreateWithoutRiversInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutTacklesInput {
+  create: UserCreateWithoutTacklesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutDatesInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  fish: FishCreateManyWithoutAuthorInput
+  flies: FlyCreateManyWithoutAuthorInput
+  rivers: RiverCreateManyWithoutAuthorInput
+  tackles: TackleCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutFishInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  flies: FlyCreateManyWithoutAuthorInput
+  rivers: RiverCreateManyWithoutAuthorInput
+  tackles: TackleCreateManyWithoutAuthorInput
+  dates: DatesCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutFliesInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  fish: FishCreateManyWithoutAuthorInput
+  rivers: RiverCreateManyWithoutAuthorInput
+  tackles: TackleCreateManyWithoutAuthorInput
+  dates: DatesCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutRiversInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  fish: FishCreateManyWithoutAuthorInput
+  flies: FlyCreateManyWithoutAuthorInput
+  tackles: TackleCreateManyWithoutAuthorInput
+  dates: DatesCreateManyWithoutAuthorInput
+}
+
+input UserCreateWithoutTacklesInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  fish: FishCreateManyWithoutAuthorInput
+  flies: FlyCreateManyWithoutAuthorInput
+  rivers: RiverCreateManyWithoutAuthorInput
+  dates: DatesCreateManyWithoutAuthorInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateInput {
+  name: String
+  email: String
+  password: String
+  fish: FishUpdateManyWithoutAuthorInput
+  flies: FlyUpdateManyWithoutAuthorInput
+  rivers: RiverUpdateManyWithoutAuthorInput
+  tackles: TackleUpdateManyWithoutAuthorInput
+  dates: DatesUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateManyMutationInput {
+  name: String
+  email: String
+  password: String
+}
+
+input UserUpdateOneRequiredWithoutDatesInput {
+  create: UserCreateWithoutDatesInput
+  update: UserUpdateWithoutDatesDataInput
+  upsert: UserUpsertWithoutDatesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutFishInput {
+  create: UserCreateWithoutFishInput
+  update: UserUpdateWithoutFishDataInput
+  upsert: UserUpsertWithoutFishInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutFliesInput {
+  create: UserCreateWithoutFliesInput
+  update: UserUpdateWithoutFliesDataInput
+  upsert: UserUpsertWithoutFliesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutRiversInput {
+  create: UserCreateWithoutRiversInput
+  update: UserUpdateWithoutRiversDataInput
+  upsert: UserUpsertWithoutRiversInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateOneRequiredWithoutTacklesInput {
+  create: UserCreateWithoutTacklesInput
+  update: UserUpdateWithoutTacklesDataInput
+  upsert: UserUpsertWithoutTacklesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutDatesDataInput {
+  name: String
+  email: String
+  password: String
+  fish: FishUpdateManyWithoutAuthorInput
+  flies: FlyUpdateManyWithoutAuthorInput
+  rivers: RiverUpdateManyWithoutAuthorInput
+  tackles: TackleUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutFishDataInput {
+  name: String
+  email: String
+  password: String
+  flies: FlyUpdateManyWithoutAuthorInput
+  rivers: RiverUpdateManyWithoutAuthorInput
+  tackles: TackleUpdateManyWithoutAuthorInput
+  dates: DatesUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutFliesDataInput {
+  name: String
+  email: String
+  password: String
+  fish: FishUpdateManyWithoutAuthorInput
+  rivers: RiverUpdateManyWithoutAuthorInput
+  tackles: TackleUpdateManyWithoutAuthorInput
+  dates: DatesUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutRiversDataInput {
+  name: String
+  email: String
+  password: String
+  fish: FishUpdateManyWithoutAuthorInput
+  flies: FlyUpdateManyWithoutAuthorInput
+  tackles: TackleUpdateManyWithoutAuthorInput
+  dates: DatesUpdateManyWithoutAuthorInput
+}
+
+input UserUpdateWithoutTacklesDataInput {
+  name: String
+  email: String
+  password: String
+  fish: FishUpdateManyWithoutAuthorInput
+  flies: FlyUpdateManyWithoutAuthorInput
+  rivers: RiverUpdateManyWithoutAuthorInput
+  dates: DatesUpdateManyWithoutAuthorInput
+}
+
+input UserUpsertWithoutDatesInput {
+  update: UserUpdateWithoutDatesDataInput!
+  create: UserCreateWithoutDatesInput!
+}
+
+input UserUpsertWithoutFishInput {
+  update: UserUpdateWithoutFishDataInput!
+  create: UserCreateWithoutFishInput!
+}
+
+input UserUpsertWithoutFliesInput {
+  update: UserUpdateWithoutFliesDataInput!
+  create: UserCreateWithoutFliesInput!
+}
+
+input UserUpsertWithoutRiversInput {
+  update: UserUpdateWithoutRiversDataInput!
+  create: UserCreateWithoutRiversInput!
+}
+
+input UserUpsertWithoutTacklesInput {
+  update: UserUpdateWithoutTacklesDataInput!
+  create: UserCreateWithoutTacklesInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  fish_every: FishWhereInput
+  fish_some: FishWhereInput
+  fish_none: FishWhereInput
+  flies_every: FlyWhereInput
+  flies_some: FlyWhereInput
+  flies_none: FlyWhereInput
+  rivers_every: RiverWhereInput
+  rivers_some: RiverWhereInput
+  rivers_none: RiverWhereInput
+  tackles_every: TackleWhereInput
+  tackles_some: TackleWhereInput
+  tackles_none: TackleWhereInput
+  dates_every: DatesWhereInput
+  dates_some: DatesWhereInput
+  dates_none: DatesWhereInput
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}

@@ -1,8 +1,75 @@
 type User {
-	id: ID! @unique
+	id: ID! @id
 	name: String!
 	email: String! @unique
 	password: String!
+	fish: [Fish!]! @relation(name: "UserToFish", onDelete: CASCADE)
+	flies: [Fly!]! @relation(name: "UserToFly", onDelete: SET_NULL)
+	rivers: [River!]! @relation(name: "UserToRiver", onDelete: SET_NULL)
+	tackles: [Tackle!]! @relation(name: "UserToTackle", onDelete: CASCADE)
+	dates: [Dates!]! @relation(name: "UserToDates", onDelete: CASCADE)
+	updatedAt: DateTime! @updatedAt
+	createdAt: DateTime! @createdAt
+}
+
+type Fish {
+	id: ID! @id
+	species: String!
+	subspecies: String
+	author: User! @relation(name: "FishToUser", onDelete: SET_NULL)
+	updatedAt: DateTime! @updatedAt
+	createdAt: DateTime! @createdAt
+}
+
+type Tackle {
+	id: ID! @id
+	rod: String!
+	rodWeight: Int!
+	rodLengthFeet: Int!
+	rodLengthInches: Int!
+	overcharged: String!
+	leaderLengthFeet: Int!
+	leaderLengthInches: Int!
+	tippetSize: Int!
+	author: User! @unique @relation(name: "TackleToUser", onDelete: SET_NULL)
+	updatedAt: DateTime! @updatedAt
+	createdAt: DateTime! @createdAt
+}
+
+type Fly {
+	id: ID! @id
+	type: String!
+	name: String!
+	color: String!
+	author: User! @relation(name: "FlyToUser", onDelete: SET_NULL)
+	updatedAt: DateTime! @updatedAt
+	createdAt: DateTime! @createdAt
+}
+
+type River {
+	id: ID! @id
+	latitude: Float!
+	longitude: Float!
+	name: String!
+	overgrown: String
+	size: String
+	regulation: String!
+	author: User! @unique @relation(name: "RiverToUser", onDelete: SET_NULL)
+	updatedAt: DateTime! @updatedAt
+	createdAt: DateTime! @createdAt
+}
+
+type Dates {
+	id: ID! @id
+	date: String!
+	amountCaught: String
+	averageSize: String
+	largestSize: String
+	fish: [String] @scalarList(strategy: RELATION, onDelete: CASCADE)
+	tackle: String!
+	river: String!
+	flies: [String!]! @scalarList(strategy: RELATION, onDelete: CASCADE)
+	author: User! @relation(name: "DatesToUser", onDelete: SET_NULL)
 	updatedAt: DateTime! @updatedAt
 	createdAt: DateTime! @createdAt
 }

@@ -1,14 +1,13 @@
-# import UserOrderByInput from './generated/prisma.graphql'
-
 type Query {
-	users(
-		query: String
-		first: Int
-		skip: Int
-		after: String
-		orderBy: UserOrderByInput
-	): [User!]!
+	users(query: String): [User!]!
 	me: User!
+	rivers(query: String): [River!]!
+	tackle(query: String): [Tackle!]!
+	flies(query: String): [Fly!]!
+	dates(query: String): [Dates!]!
+	fish(query: String): [Fish!]!
+	myTackle: [Tackle!]!
+	myDates(query: String): [Dates!]!
 }
 
 type Mutation {
@@ -16,10 +15,26 @@ type Mutation {
 	login(data: LoginUserInput!): AuthPayload!
 	deleteUser: User!
 	updateUser(data: UpdateUserInput!): User!
+	createRiver(data: CreateRiverInput!): River!
+	updateRiver(id: ID!, data: UpdateRiverInput!): River!
+	deleteRiver(id: ID!): River!
+	createTackle(data: CreateTackleInput!): Tackle!
+	updateTackle(id: ID!, data: UpdateTackleInput!): Tackle!
+	deleteTackle(id: ID!): Tackle!
+	createFlies(data: CreateFliesInput!): Fly!
+	updateFlies(id: ID!, data: UpdateFliesInput!): Fly!
+	deleteFlies(id: ID!): Fly!
+	createDate(data: CreateDatesInput!): Dates!
+	updateDate(id: ID!, data: UpdateDatesInput!): Dates!
+	deleteDate(id: ID!): Dates!
+	createFish(data: CreateFishInput!): Fish!
+	updateFish(id: ID!, data: UpdateFishInput!): Fish!
+	deleteFish(id: ID!): Fish!
 }
 
-#type Subscription {
-#}
+type Subscription {
+	myTackle: TackleSubscriptionPayload!
+}
 
 type AuthPayload {
 	token: String!
@@ -43,11 +58,177 @@ input UpdateUserInput {
 	password: String
 }
 
+input CreateRiverInput {
+	latitude: Float!
+	longitude: Float!
+	name: String!
+	overgrown: String
+	size: String
+	regulation: String!
+}
+
+input UpdateRiverInput {
+	latitude: Float
+	longitude: Float
+	name: String
+	overgrown: String
+	size: String
+	regulation: String
+}
+
+input CreateTackleInput {
+	rod: String!
+	rodWeight: Int!
+	rodLengthFeet: Int!
+	rodLengthInches: Int!
+	overcharged: String!
+	leaderLengthFeet: Int!
+	leaderLengthInches: Int!
+	tippetSize: Int!
+}
+
+input UpdateTackleInput {
+	rod: String
+	rodWeight: Int
+	rodLengthFeet: Int
+	rodLengthInches: Int
+	overcharged: String
+	leaderLengthFeet: Int
+	leaderLengthInches: Int
+	tippetSize: Int
+}
+
+input CreateFliesInput {
+	type: String!
+	name: String!
+	color: String!
+}
+
+input UpdateFliesInput {
+	type: String
+	name: String
+	color: String
+}
+
+input CreateDatesInput {
+	date: String!
+	amountCaught: String!
+	averageSize: String
+	largestSize: String
+	fish: [String]
+	flies: [String!]!
+	river: String!
+	tackle: String!
+}
+
+input CreateDateFishInput {
+	fish: [String]
+}
+
+input CreateDateFliesInput {
+	flies: [String!]!
+}
+
+input UpdateDatesInput {
+	date: String
+	amountCaught: String
+	averageSize: String
+	largestSize: String
+	fish: [String]
+	flies: [String]
+	river: String
+	tackle: String
+}
+
+input CreateFishInput {
+	species: String!
+	subspecies: String
+}
+
+input UpdateFishInput {
+	species: String
+	subspecies: String
+}
+
 type User {
 	id: ID!
 	name: String!
 	email: String
 	password: String!
+	updatedAt: String!
+	createdAt: String!
+	dates: [Dates!]!
+	flies: [Fly!]!
+	fish: [Fish!]!
+	rivers: [River!]!
+	tackles: [Tackle!]!
+}
+
+type Fish {
+	id: ID!
+	species: String!
+	subspecies: String
+	author: User!
+	river: [River!]
+	dates: [Dates!]
+	tackles: [Tackle!]
+	updatedAt: String!
+	createdAt: String!
+}
+
+type Tackle {
+	id: ID!
+	rod: String!
+	rodWeight: Int!
+	rodLengthFeet: Int!
+	rodLengthInches: Int!
+	overcharged: String!
+	leaderLengthFeet: Int!
+	leaderLengthInches: Int!
+	tippetSize: Int!
+	dates: [Dates!]
+	author: User!
+	updatedAt: String!
+	createdAt: String!
+}
+
+type Fly {
+	id: ID!
+	type: String!
+	name: String!
+	color: String!
+	author: User!
+	date: [Dates!]
+	updatedAt: String!
+	createdAt: String!
+}
+
+type River {
+	id: ID!
+	latitude: Float!
+	longitude: Float!
+	name: String!
+	overgrown: String
+	size: String
+	regulation: String!
+	fish: [Fish!]
+	tackle: [Tackle!]
+	author: User!
+	updatedAt: String!
+	createdAt: String!
+}
+
+type Dates {
+	id: ID!
+	date: String!
+	amountCaught: String
+	averageSize: String
+	largestSize: String
+	fish: [String]
+	flies: [String!]!
+	tackle: String!
+	river: String!
+	author: User!
 	updatedAt: String!
 	createdAt: String!
 }
@@ -56,4 +237,9 @@ enum MutationType {
 	CREATED
 	UPDATED
 	DELETED
+}
+
+type TackleSubscriptionPayload {
+	mutation: MutationType!
+	node: Tackle
 }
