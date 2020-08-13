@@ -6,5 +6,5 @@ and information. While this project is barebones in terms of the database and re
 familiarize myself with GraphQL and Prisma. 
 
 Some of the key takeaways of this project, were that I needed to dive deeper into relational data structure with SQL, 
-and approach the next API I build from a SQL database first approach, allowing me to flesh out the database structure more, 
-before beginning to work on the API side of things. Additionally I am currently exploring the latest version of Prisma.
+allowing me to flesh out the database structure more, before beginning to work on the API side of things. Additionally
+I am currently exploring the latest version of Prisma.
